@@ -1,0 +1,9 @@
+FUNCTION Minimax(node, depth, isMyTurn)
+    IF depth = 0 or node is leaf
+        RETURN Heuristic(node)
+    IF isMyTurn
+        bestValue = isMyTurn ? -INF : +INF
+        FOR EACH child OF node
+            value = Minimax(child, depth - 1, !isMyTurn)
+            bestValue = isMyTurn ? Max(bestValue, value) : Min(bestValue, value)
+        RETURN bestValue
